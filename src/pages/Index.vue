@@ -1,7 +1,7 @@
 <template>
     <section class="flex justify-center items-center mt-8 gap-1.5">
         <aside>
-            <div @click="this.onCheck('a')" class="relative  ">
+            <div @click="this.onCheck('a')" class="relative">
                 <div :class="this.choiseA ? 'bg-[#FF785A80] z-10 flex justify-center items-center rounded-[20px] border-black border-t-2 border-x border-b-4 absolute' : 'hidden'"
                     class="w-[126px] h-[126px]">
                     <img class="w-[50px] h-[50px]" src="/icons/Checkmark.png" />
@@ -12,7 +12,7 @@
         </aside>
         <img class="w-[50px] relative top-[-15px] h-[65px]" src="/img/common/vs.png" />
         <aside>
-            <div @click="this.onCheck('b')" class="relative  ">
+            <div @click="this.onCheck('b')" class="relative">
                 <div :class="this.choiseB ? 'bg-[#FF785A80] z-10 flex justify-center items-center rounded-[20px] border-black border-t-2 border-x border-b-4 absolute' : 'hidden'"
                     class="w-[126px] h-[126px]">
                     <img class="w-[50px] h-[50px]" src="/icons/Checkmark.png" />
@@ -133,7 +133,7 @@ export default {
             pageUrl: '',
             choiseA: false,
             choiseB: false,
-            popUp: false,
+            popUp: true,
             aCount: 0,
             bCount: 0,
         }
@@ -150,16 +150,14 @@ export default {
                 this.onCount(1);
                 this.choiseA = true;
                 this.choiseB = false;
-                this.getACount();
             }
             else {
                 this.onCount(2);
                 this.choiseA = false;
                 this.choiseB = true;
-                this.getBCount();
             }
         },
-        linkShare(id) {
+        linkShare() {
             let url = '';
             const textarea = document.createElement("textarea");
             document.body.appendChild(textarea);
@@ -199,6 +197,8 @@ export default {
         onCount(type) {
             const store = useStore();
             store.onChoise(type).then((response) => {
+                this.getACount();
+                this.getBCount();
             }).catch((error) => {
                 console.log(error);
             });
