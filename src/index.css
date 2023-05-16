@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn-fill-primary {
+    @apply bg-primary hover:bg-primary-dark hover:text-white text-white border-none rounded-md;
+  }
+}
