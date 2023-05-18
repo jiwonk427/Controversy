@@ -26,6 +26,8 @@
 }
 
 #app {
+  max-width: 500px;
+  margin: auto;
 }
 
 @media (prefers-color-scheme: light) {

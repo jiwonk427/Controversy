@@ -23,8 +23,9 @@
         </aside>
     </section>
 
+    <!-- 하단 팝업 -->
     <section
-        class="result-box  shadow-md border-primary border-4  rounded-t-[20px] bottom-0  absolute left-5 right-5 bg-white">
+        class="result-box max-w-[500px] m-auto shadow-md border-primary border-4  rounded-t-[20px] bottom-0  absolute left-5 right-5 bg-white">
         <div @click="this.onPop"
             class=" bg-primary rounded-full w-[40px] h-[40px] flex justify-center left-[calc(50%_-_20px)] -top-[20px] items-center absolute">
             <img :class="this.popUp ? '' : 'rotate-180'" class="w-[20px]" src="/icons/arr-bottom.png" />
@@ -66,7 +67,7 @@
         </div>
     </section>
 
-    <!-- 팝업 -->
+    <!-- 공유하기 팝업 -->
     <TransitionRoot appear :show="isOpen" as="template">
         <Dialog as="div" @close="closeModal" class="relative z-10">
             <TransitionChild as="template" enter="duration-300 ease-out" enter-from="opacity-0" enter-to="opacity-100"
@@ -86,9 +87,9 @@
                                 <img class="w-[20px] h-[20px]" src="/icons/close.png" />
                             </button>
                             <div class="w-full flex justify-center items-center gap-5">
-                                <img class="w-[30px] h-[30px]" src="/icons/kakao.png" />
-                                <img class="w-[30px] h-[30px]" src="/icons/twit.png" />
-                                <img class="w-[30px] h-[30px]" src="/icons/face.png" />
+                                <img @click="this.shareKakao()" class="w-[30px] h-[30px]" src="/icons/kakao.png" />
+                                <img @click="this.shareTwitter()" class="w-[30px] h-[30px]" src="/icons/twit.png" />
+                                <img @click="this.shareFacebook()" class="w-[30px] h-[30px]" src="/icons/face.png" />
                             </div>
                             <div class="border-[#ddd] flex justify-between items-center rounded-xl p-1.5 border w-full">
                                 <p class="text-[#999] font-normal p-2.5 font-[Roboto] text-sm">
@@ -158,15 +159,33 @@ export default {
             }
         },
         linkShare() {
-            let url = '';
             const textarea = document.createElement("textarea");
             document.body.appendChild(textarea);
-            url = window.location.href;
-            textarea.value = url;
+            textarea.value = this.pageUrl;
             textarea.select();
             document.execCommand("copy");
             document.body.removeChild(textarea);
-            alert('주소를 복사하였습니다');
+            alert('링크를 복사하였습니다');
+        },
+        shareFacebook() {
+            window.open('http://www.facebook.com/sharer.php?u=' + this.pageUrl)
+        },
+        shareTwitter() {
+            let sendText = "오늘의 논란종결";
+            window.open("https://twitter.com/intent/tweet?text=" + sendText + "&url=" + this.pageUrl);
+        },
+        shareKakao() {
+            Kakao.Share.sendDefault({
+                objectType: 'feed',
+                content: {
+                    title: '오늘의 논란종결',
+                    imageUrl: this.pageUrl,
+                    link: {
+                        mobileWebUrl: this.pageUrl,
+                        webUrl: this.pageUrl,
+                    },
+                },
+            })
         },
         onUrl() {
             this.pageUrl = window.location.href;
