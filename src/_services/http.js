@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const http = axios.create({
-    baseURL: "http://52.78.13.239:10001",
+    baseURL: "http://api.alltest.kr",
     headers: {
         "Content-Type": "application/json",
     },

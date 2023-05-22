@@ -221,12 +221,20 @@ export default {
             }).catch((error) => {
                 console.log(error);
             });
+        },
+        refreshCount(){
+          this.getACount();
+          this.getBCount();
+          setTimeout(function() { // 3초 반복
+            this.refreshCount();
+          }.bind(this), 3000);
         }
     },
     mounted() {
         this.onUrl();
         this.getACount();
         this.getBCount();
+        this.refreshCount();
     }
 };
 </script>
