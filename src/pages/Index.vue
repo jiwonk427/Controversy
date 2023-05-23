@@ -1,4 +1,7 @@
 <template>
+    <div class="text-[#444] dark:text-white text-sm font-extrabold text-center">
+        <span class="text-[#FF785A]">Q. </span>탕수육에는 소스를 부어먹는다? 찍어먹는다?
+    </div>
     <section class="flex justify-center items-center mt-8 gap-1.5">
         <aside>
             <div @click="this.onCheck('a')" class="relative">
@@ -8,7 +11,10 @@
                 </div>
                 <img class="w-[126px]" src="/img/food1.png" />
             </div>
-            <p class="font-extrabold m-2.5 text-center text-base text-[#444]">부먹</p>
+            <p class="font-extrabold m-2.5 text-center text-base text-[#444] dark:text-white">
+                본래 <span class="text-[#FF785A]">부먹</span>하는<br />
+                음식이라구!
+            </p>
         </aside>
         <img class="w-[50px] relative top-[-15px] h-[65px]" src="/img/common/vs.png" />
         <aside>
@@ -19,13 +25,16 @@
                 </div>
                 <img class="w-[126px]" src="/img/food2.png" />
             </div>
-            <p class="font-extrabold m-2.5 text-center text-base text-[#444]">찍먹</p>
+            <p class="font-extrabold m-2.5 text-center text-base text-[#444] dark:text-white">
+                바삭하게 먹으<br />
+                려면 <span class="text-[#FF785A]">찍먹</span>이지!
+            </p>
         </aside>
     </section>
 
     <!-- 하단 팝업 -->
     <section
-        class="result-box max-w-[500px] m-auto shadow-md border-primary border-4  rounded-t-[20px] bottom-0  absolute left-5 right-5 bg-white">
+        class="foot result-box max-w-[500px] m-auto shadow-md border-primary border-4 rounded-t-[20px] bottom-0 absolute left-5 right-5 bg-white">
         <div @click="this.onPop"
             class=" bg-primary rounded-full w-[40px] h-[40px] flex justify-center left-[calc(50%_-_20px)] -top-[20px] items-center absolute">
             <img :class="this.popUp ? '' : 'rotate-180'" class="w-[20px]" src="/icons/arr-bottom.png" />
@@ -36,7 +45,7 @@
                 <div class="flex justify-between w-full">
                     <p :class="aCount > bCount ? 'font-extrabold ' : 'font-medium font-[OAGothic-M]'"
                         class="text-[#444] text-sm ">
-                        A 부먹
+                        본래 부어먹는 음식이라고!
                     </p>
                     <p :class="aCount > bCount ? 'font-extrabold ' : 'font-medium font-[OAGothic-M]'" class="text-primary">
                         {{ aCount }}</p>
@@ -44,7 +53,7 @@
                 <div class="flex justify-between w-full">
                     <p :class="aCount < bCount ? 'font-extrabold ' : 'font-medium font-[OAGothic-M]'"
                         class="text-[#444] text-sm ">
-                        B 찍먹
+                        바삭하게 먹으려면 찍먹이지!
                     </p>
                     <p :class="aCount < bCount ? 'font-extrabold ' : 'font-medium font-[OAGothic-M]'" class="text-primary">
                         {{ bCount }}</p>
@@ -222,12 +231,12 @@ export default {
                 console.log(error);
             });
         },
-        refreshCount(){
-          this.getACount();
-          this.getBCount();
-          setTimeout(function() { // 3초 반복
-            this.refreshCount();
-          }.bind(this), 3000);
+        refreshCount() {
+            this.getACount();
+            this.getBCount();
+            setTimeout(function () { // 3초 반복
+                this.refreshCount();
+            }.bind(this), 3000);
         }
     },
     mounted() {
