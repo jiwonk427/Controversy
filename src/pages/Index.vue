@@ -1,5 +1,5 @@
 <template>
-    <div class="text-[#444] dark:text-white text-sm font-extrabold text-center">
+    <div class="text-[#444] dark:text-white text-sm font-extrabold text-center mt-1.5">
         <span class="text-[#FF785A]">Q. </span>탕수육에는 소스를 부어먹는다? 찍어먹는다?
     </div>
     <section class="flex justify-center items-center mt-8 gap-1.5">
@@ -31,6 +31,9 @@
             </p>
         </aside>
     </section>
+    <div class="text-[#444] text-[10px] text-center dark:text-white mt-5">
+        *당신이 성향을 클릭하면 아래의 현황에서 확인할 수 있습니다.
+    </div>
 
     <!-- 하단 팝업 -->
     <section
