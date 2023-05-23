@@ -14,7 +14,27 @@
 
 <body>
   <div id="app"></div>
+  <div id="divadsensedisplaynone" style="display:none;">
+      <!-- put here all adsense code -->
+      <ins class="adsbygoogle"
+           style="display:inline-block;width:468px;height:60px"
+           data-ad-client="ca-pub-6973322643802207"
+           data-ad-slot="2664492406"></ins>
+  </div>
   <script type="module" src="/src/main.js"></script>
 </body>
+<script>
+    window.onload = function() {
+        (adsbygoogle = window.adsbygoogle || []).push({});
 
+        var flex = document.getElementsByClassName('adsense')[0];
+        const observer = new MutationObserver(function (mutations, observer) {
+            flex.style.height = "";
+        });
+        observer.observe(flex, {
+            attributes: true,
+            attributeFilter: ['style']
+        });
+    }
+</script>
 </html>

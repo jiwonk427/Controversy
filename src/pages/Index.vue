@@ -73,8 +73,8 @@
                     <img class="w-[18px] h-[20px]" src="/icons/share.png" />
                 </button>
             </div>
-            <div class="w-full h-[50px] bg-slate-300" :class="this.popUp ? 'block' : 'hidden'">
-                광고박스
+            <div class="w-full h-[50px] bg-slate-300 adsense" :class="this.popUp ? 'block' : 'hidden'">
+              <div id="adsgoeshere" v-html="adsenseContent"></div>
             </div>
         </div>
     </section>
@@ -149,6 +149,7 @@ export default {
             popUp: true,
             aCount: 0,
             bCount: 0,
+            adsenseContent: '',
         }
     },
     methods: {
@@ -243,7 +244,8 @@ export default {
         }
     },
     mounted() {
-        this.onUrl();
+      this.adsenseContent = document.getElementById('divadsensedisplaynone').innerHTML
+      this.onUrl();
         this.getACount();
         this.getBCount();
         this.refreshCount();
