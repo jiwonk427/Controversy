@@ -1,34 +1,33 @@
 <template>
     <div class="overflow-hidden">
         <div class="text-[#444] dark:text-white text-sm font-extrabold text-center mt-1.5">
-            <span class="text-[#FF785A]">Q. </span>탕수육에는 소스를 부어먹는다? 찍어먹는다?
+            <span class="text-[#FF785A]">Q. </span>복권 15억 받기? 연금 월 625만 원씩 20년 받기?
         </div>
         <section class="flex justify-center items-center mt-8 gap-1.5">
-            <aside>
+            <aside class="w-[150px] flex-wrap flex justify-center">
                 <div @click="this.onCheck('a')" class="relative">
                     <div :class="this.choiseA ? 'bg-[#FF785A80] z-10 flex justify-center items-center rounded-[20px] border-black border-t-2 border-x border-b-4 absolute' : 'hidden'"
                         class="w-[126px] h-[126px]">
                         <img class="w-[50px] h-[50px]" src="/icons/Checkmark.png" />
                     </div>
-                    <img class="w-[126px]" src="/img/food1.png" />
+                    <img class="w-[126px] h-[126px] rounded-[20px]" src="/img/lotto.png" />
                 </div>
                 <p class="font-extrabold m-2.5 text-center text-base text-[#444] dark:text-white">
-                    본래 <span class="text-[#FF785A]">부먹</span>하는<br />
-                    음식이라구!
+                    복권 <span class="text-[#FF785A]">15억</span><br /> 한 번에 받기
                 </p>
             </aside>
             <img class="w-[50px] relative top-[-15px] h-[65px]" src="/img/common/vs.png" />
-            <aside>
+            <aside class="w-[150px] flex-wrap flex justify-center">
                 <div @click="this.onCheck('b')" class="relative">
                     <div :class="this.choiseB ? 'bg-[#FF785A80] z-10 flex justify-center items-center rounded-[20px] border-black border-t-2 border-x border-b-4 absolute' : 'hidden'"
                         class="w-[126px] h-[126px]">
                         <img class="w-[50px] h-[50px]" src="/icons/Checkmark.png" />
                     </div>
-                    <img class="w-[126px]" src="/img/food2.png" />
+                    <img class="w-[126px] h-[126px] rounded-[20px]" src="/img/pension.png" />
                 </div>
                 <p class="font-extrabold m-2.5 text-center text-base text-[#444] dark:text-white">
-                    바삭하게 먹으<br />
-                    려면 <span class="text-[#FF785A]">찍먹</span>이지!
+                    연금 <span class="text-[#FF785A]">월 625만 원</span><br />
+                    20년 동안 받기
                 </p>
             </aside>
         </section>
@@ -50,7 +49,7 @@
                         <div class="flex justify-between w-full">
                             <p :class="aCount > bCount ? 'font-extrabold ' : 'font-medium font-[OAGothic-M]'"
                                 class="text-[#444] text-sm ">
-                                본래 부어먹는 음식이라고!
+                                복권 15억
                             </p>
                             <p :class="aCount > bCount ? 'font-extrabold ' : 'font-medium font-[OAGothic-M]'"
                                 class="text-primary">
@@ -59,7 +58,7 @@
                         <div class="flex justify-between w-full">
                             <p :class="aCount < bCount ? 'font-extrabold ' : 'font-medium font-[OAGothic-M]'"
                                 class="text-[#444] text-sm ">
-                                바삭하게 먹으려면 찍먹이지!
+                                연금 월 625만 원씩 20년
                             </p>
                             <p :class="aCount < bCount ? 'font-extrabold ' : 'font-medium font-[OAGothic-M]'"
                                 class="text-primary">
@@ -83,7 +82,6 @@
                 </div>
             </section>
         </div>
-
 
         <!-- 공유하기 팝업 -->
         <TransitionRoot appear :show="isOpen" as="template">
@@ -168,12 +166,12 @@ export default {
         },
         onCheck(check) {
             if (check == 'a') {
-                this.onCount(1);
+                this.onCount(3);
                 this.choiseA = true;
                 this.choiseB = false;
             }
             else {
-                this.onCount(2);
+                this.onCount(4);
                 this.choiseA = false;
                 this.choiseB = true;
             }
@@ -215,7 +213,7 @@ export default {
         },
         getACount() {
             const store = useStore();
-            store.getByCount(1).then((response) => {
+            store.getByCount(3).then((response) => {
                 if (response.data.CODE == 200) {
                     this.aCount = response.data.BODY;
                 }
@@ -225,7 +223,7 @@ export default {
         },
         getBCount() {
             const store = useStore();
-            store.getByCount(2).then((response) => {
+            store.getByCount(4).then((response) => {
                 if (response.data.CODE == 200) {
                     this.bCount = response.data.BODY;
                 }
