@@ -6,10 +6,37 @@
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no" />
   <title>오늘의 논란 종결</title>
+  <link rel="stylesheet" type="text/css" href="/css/action.css" />
+  <script type="text/javascript" src="/js/jquery-1.12.4.min.js"></script>
+  <script type="text/javascript" src="/js/animation.js"></script>
   <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
   <script>Kakao.init("f2e1f68f569ebfb34a7e5dcb19790517");</script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6973322643802207"
     crossorigin="anonymous"></script>
+    <script src='//img.mobon.net/js/common/HawkEyesMaker.js'></script>
+
+    <script type="text/javascript">
+        var mobileCheck = function () {
+            var userAgent = navigator.userAgent;
+            if (userAgent == null) {
+                return false;
+            }
+            var mobile1 = userAgent.match("iPhone|iPod|iPad|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson");
+            var mobile2 = userAgent.match("LG|SAMSUNG|Samsung");
+            if (mobile1 || mobile2) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        if (!mobileCheck()) {
+            <!-- [웹스크립트] -->
+            new HawkEyes({"type":"banner","responsive":"Y","platform":"W","scriptCode":"856889","frameCode":"75","width":"468","height":"60","settings":{"cntad":"1","cntsr":"3"}});
+        } else {
+            <!-- [모바일스크립트] -->
+            new HawkEyes({"type":"banner","responsive":"Y","platform":"W","scriptCode":"856889","frameCode":"75","width":"468","height":"60","settings":{"cntad":"1","cntsr":"3"}});
+        } </script>
+
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HZ7FFKZLCG"></script>
@@ -48,4 +75,6 @@
         });
     }
 </script>
+
+
 </html>
