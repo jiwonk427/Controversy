@@ -1,4 +1,6 @@
 $( document ).ready(function() {
+    console.log("Load")
+
     var cnt = 0;
     $(".item1").click(function (){
         clickAnimation(".item1", cnt++)

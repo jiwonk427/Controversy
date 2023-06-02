@@ -5,7 +5,7 @@
         </div>
         <section class="flex justify-center items-center mt-8 gap-1.5">
             <aside class="w-[150px] flex-wrap flex justify-center">
-                <div @click="this.onCheck('a')" class="relative item1">
+                <div @click="this.onCheck('a'), clickAnimation('.item1')" class="relative item1">
                     <div :class="this.choiseA ? 'bg-[#FF785A80] z-10 flex justify-center items-center rounded-[20px] border-black border-t-2 border-x border-b-4 absolute' : 'hidden'"
                         class="w-[126px] h-[126px]">
                         <img class="w-[50px] h-[50px]" src="/icons/Checkmark.png" />
@@ -18,7 +18,7 @@
             </aside>
             <img class="w-[50px] relative top-[-15px] h-[65px]" src="/img/common/vs.png" />
             <aside class="w-[150px] flex-wrap flex justify-center">
-                <div @click="this.onCheck('b')" class="relative item2">
+                <div @click="this.onCheck('b'), clickAnimation('.item2')" class="relative item2">
                     <div :class="this.choiseB ? 'bg-[#FF785A80] z-10 flex justify-center items-center rounded-[20px] border-black border-t-2 border-x border-b-4 absolute' : 'hidden'"
                         class="w-[126px] h-[126px]">
                         <img class="w-[50px] h-[50px]" src="/icons/Checkmark.png" />
@@ -128,6 +128,8 @@
 
 <script>
 import { ref } from 'vue'
+import $ from 'Jquery';
+
 import {
     TransitionRoot,
     TransitionChild,
@@ -155,6 +157,7 @@ export default {
             aCount: 0,
             bCount: 0,
             adsenseContent: '',
+            cnt: 1,
         }
     },
     methods: {
@@ -246,7 +249,17 @@ export default {
             setTimeout(function () { // 3초 반복
                 this.refreshCount();
             }.bind(this), 3000);
-        }
+        },
+        clickAnimation (item){
+          var cnt = this.cnt++
+          $(item).append(
+              "<span class='cnt"+cnt+"'>+1</span>"
+          );
+          setTimeout(function() {
+            console.log(".cnt"+cnt)
+            $(".cnt"+cnt).remove();
+          }, 1000);
+        },
     },
     mounted() {
         this.adsenseContent = document.getElementById('divadsensedisplaynone').innerHTML
